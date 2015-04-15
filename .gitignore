@@ -1,28 +1,30 @@
-# Compiled Object files
-*.slo
-*.lo
+# Qt-es
+
+#decided to include Qt
+#*.pro
+*.h.autosave
+*.cpp.autosave
+*.pro.user
+*.pro.user.*
+moc_*.cpp
+qrc_*.cpp
+main
+*.txt.user
+*.txt.user*
+*-build-*
+*build*
 *.o
-*.obj
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
 *.exe
-*.out
-*.app
+*exe.core
+*.xmi
+
+
+#Sublime-Projects
+*.sublime-workspace
+*.sublime-project
+
+#Eclipse Projects
+RemoteSystemsTempFiles*
+*.metadata
+*.log
