@@ -18,7 +18,7 @@ int main()
 void testConverter() {
     std::cout << "---   Testing Converter -----\n";
     try {
-        NLP::Converter converted("This is apple"); // Passed
+        NLP::Converter converted("This is bear"); // Passed
 
         converted.getWords();
 
