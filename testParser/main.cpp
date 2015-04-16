@@ -10,7 +10,9 @@ int main()
     testConverter("This is a Bear");
     testConverter("That is not a building");       /// Bug , comma in dictionary
     testConverter("Who told you that?");
-//    testConverter("That's what she said.");
+    testConverter("That's what she said.");
+    testConverter("In general, the dative marks the indirect object of a verb, although in some instances, the dative is used for the direct object of a verb pertaining directly to an act of giving something");
+    testConverter("These pronouns are not proper datives anymore in modern English, because they are also used for functions of the accusative.");
     return 0;
 }
 
