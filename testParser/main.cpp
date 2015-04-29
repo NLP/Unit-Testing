@@ -9,8 +9,8 @@ int main()
 {
 //    testConverter("Those octopi looked delicious"); // fix this, it resulted in 'O'
     testConverter("Those apples looked delicious");
-    testConverter("Do you have some matches?");
-    testConverter("Who have some machetes?");
+//    testConverter("Do you have some matches?");
+//    testConverter("Who have some machetes?");
 //    testConverter("This is a Bear");
 //    testConverter("That is not a building");       /// Bug , comma in dictionary
 //    testConverter("Who told you that?");
@@ -30,7 +30,7 @@ void testConverter(string sentence) {
     try {
 
         NLP::Converter converted(sentence); // Passed
-        list<NLP::Word> myParsedWords = converted.getWords();
+        vector<NLP::Word> myParsedWords = converted.getWords();
         for(NLP::Word wd: myParsedWords)
             cout << wd << " : " << wd.getRawtypes() << endl;
 
