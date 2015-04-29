@@ -10,7 +10,9 @@ void testParserAndGrammatica(const string& sentence);
 
 int main()
 {
-    testParserAndGrammatica("He walks");
+//    testParserAndGrammatica("He walks");
+//    testParserAndGrammatica("I like cake");
+    testParserAndGrammatica("My name is John");
     return 0;
 }
 
