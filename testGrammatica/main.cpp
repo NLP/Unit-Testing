@@ -224,4 +224,16 @@ testParser()
         cout << "#" << i+1 << ": " << S[i] << endl;
     }
     cout << endl;
+
+
+    cout << "Get a Specific Syntax: SUBJECT" << endl;
+    std::vector<SyntaxWord> T = P.getObj(*S.begin(),SUBJECT);
+    for(std::size_t i = 0; i < T.size(); ++i){
+        cout << T[i] << endl;
+    }
+    cout << "Get ALL Syntaxes" << endl;
+    std::vector<SyntaxWord> A = P.getAll(*S.begin());
+    for(std::size_t i = 0; i < A.size(); ++i){
+        cout << A[i] << endl;
+    }
 }
