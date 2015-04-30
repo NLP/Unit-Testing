@@ -20,10 +20,10 @@ int main()
     testParserAndGrammatica("Why should I give you a sentence"); //Why needs to be its own class.. what is should recognized as?
     testParserAndGrammatica("You are putting me on the spot");
     testParserAndGrammatica("That was not complicated"); //What type is that, and not?
-    testParserAndGrammatica("The man sent a latter to his son"); //His needs to be included as a determiner
+    testParserAndGrammatica("The man sent a letter to his son"); //His needs to be included as a determiner
     testParserAndGrammatica("The man sends a letter to a son");
-    testParserAndGrammatica("Did he die"); //Did?
-    testParserAndGrammatica("What was kicked"); //was also should be added as an aux, also what is considered a noun
+    testParserAndGrammatica("Is he die"); //Did?
+    testParserAndGrammatica("Wa he kicked"); //was also should be added as an aux, also what is considered a noun
     testParserAndGrammatica("What did John kick to Mark");
     testParserAndGrammatica("Are you here");
 
@@ -42,7 +42,7 @@ void testParserAndGrammatica(const string& sentence) {
 
 //        cout << "Getting the Grammar" << endl;
 //        cout << P.getGrammar() << endl;
-
+        cout << "Sentence: " << sentence << endl;
         cout << endl;
         cout << "Parsing the Sentence based on Grammar" << endl;
         STvector S = P.parse();
