@@ -3,6 +3,7 @@
 #include "../../Grammatica/Grammar Structure/Grammar-with-Map/cfgzero.h"
 #include "../../Grammatica/Syntax-Tree/parser.h"
 #include "../../Grammatica/Syntax-Tree/syntaxtree.h"
+#include "../../Grammatica/Grammar Structure/Grammar-with-Map/cfgq.h"
 
 using namespace std;
 
@@ -10,9 +11,22 @@ void testParserAndGrammatica(const string& sentence);
 
 int main()
 {
-//    testParserAndGrammatica("He walks");
-//    testParserAndGrammatica("I like cake");
+    testParserAndGrammatica("He walks");
+    testParserAndGrammatica("I like cake");
     testParserAndGrammatica("My name is John");
+    testParserAndGrammatica("Who are you");
+    testParserAndGrammatica("Did you eat"); //Gotta add did, does, do; have, had; am, are, is for aux
+    testParserAndGrammatica("Is John kick the ball");
+    testParserAndGrammatica("Why should I give you a sentence"); //Why needs to be its own class.. what is should recognized as?
+    testParserAndGrammatica("You are putting me on the spot");
+    testParserAndGrammatica("That was not complicated"); //What type is that, and not?
+    testParserAndGrammatica("The man sent a latter to his son"); //His needs to be included as a determiner
+    testParserAndGrammatica("The man sends a letter to a son");
+    testParserAndGrammatica("Did he die"); //Did?
+    testParserAndGrammatica("What was kicked"); //was also should be added as an aux, also what is considered a noun
+    testParserAndGrammatica("What did John kick to Mark");
+    testParserAndGrammatica("Are you here");
+
     return 0;
 }
 
@@ -24,15 +38,16 @@ void testParserAndGrammatica(const string& sentence) {
     std::cout << "---   Testing ParserAndGrammatica -----\n";
     try {
 
-        Parser P( CFGZero(), Converter(sentence).getWords());
+        Parser P(CFGQ() , Converter(sentence).getWords());
 
-        cout << "Getting the Grammar" << endl;
-        cout << P.getGrammar() << endl;
+//        cout << "Getting the Grammar" << endl;
+//        cout << P.getGrammar() << endl;
 
         cout << endl;
         cout << "Parsing the Sentence based on Grammar" << endl;
         STvector S = P.parse();
         for(std::size_t i = 0; i < S.size(); ++i){
+            cout << "SENTENCE TYPE: " << sentenceLookUp[S[i].getSentenceType()] << endl;
             cout << "#" << i+1 << ": " << S[i] << endl;
         }
 

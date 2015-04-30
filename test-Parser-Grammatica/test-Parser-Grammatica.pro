@@ -15,7 +15,9 @@ SOURCES += main.cpp \
     ../../Grammatica/Syntax-Tree/syntaxtree.cpp \
     ../../Grammatica/Syntax-Tree/syntaxword.cpp \
     ../../Grammatica/grammar.cpp \
-    ../../Grammatica/cfgzero.cpp
+    ../../Grammatica/cfgzero.cpp \
+#    ../../Grammatica/Grammar Structure/Grammar-with-Map/cfgq.cpp \
+    ../../Grammatica/cfgq.cpp
 
 HEADERS += \
     ../../Parser/Tokenizer/stokenize.h \
@@ -28,7 +30,9 @@ HEADERS += \
     ../../Grammatica/Syntax-Tree/syntaxword.h \
     ../../Grammatica/grammar.h \
     ../../Grammatica/cfgzero.h \
-    ../../CONFIG/config.h
+    ../../CONFIG/config.h \
+#    ../../Grammatica/Grammar Structure/Grammar-with-Map/cfgq.h \
+    ../../Grammatica/cfgq.h
 
 include(deployment.pri)
 qtcAddDeployment()
