@@ -11,21 +11,29 @@ void testParserAndGrammatica(const string& sentence);
 
 int main()
 {
-    testParserAndGrammatica("He walks");
-    testParserAndGrammatica("I like cake");
-    testParserAndGrammatica("My name is John");
-    testParserAndGrammatica("Who are you");
-    testParserAndGrammatica("Did you eat"); //Gotta add did, does, do; have, had; am, are, is for aux
-    testParserAndGrammatica("Is John kick the ball");
-    testParserAndGrammatica("Why should I give you a sentence"); //Why needs to be its own class.. what is should recognized as?
-    testParserAndGrammatica("You are putting me on the spot");
-    testParserAndGrammatica("That was not complicated"); //What type is that, and not?
-    testParserAndGrammatica("The man sent a letter to his son"); //His needs to be included as a determiner
-    testParserAndGrammatica("The man sends a letter to a son");
-    testParserAndGrammatica("Is he die"); //Did?
-    testParserAndGrammatica("Wa he kicked"); //was also should be added as an aux, also what is considered a noun
-    testParserAndGrammatica("What did John kick to Mark");
-    testParserAndGrammatica("Are you here");
+//    Converter C("Who");
+//    std::vector<Word> test = C.getWords();
+//    std::set<WordType> t = test.begin()->getTypes();
+
+//    std::set<WordType>::iterator it = t.begin();
+//    for(std::size_t i = 0; it != t.end(); ++it){
+//        cout << WordStringMap[*it] << endl;
+//    }
+//    testParserAndGrammatica("He walks");
+//    testParserAndGrammatica("I like cake");
+//    testParserAndGrammatica("My name is John");
+    testParserAndGrammatica("Who is you");
+//    testParserAndGrammatica("Did you eat"); //Gotta add did, does, do; have, had; am, are, is for aux
+//    testParserAndGrammatica("Is John kick the ball");
+//    testParserAndGrammatica("Why should I give you a sentence"); //Why needs to be its own class.. what is should recognized as?
+//    testParserAndGrammatica("You are putting me on the spot");
+//    testParserAndGrammatica("That was not complicated"); //What type is that, and not?
+//    testParserAndGrammatica("The man sent a letter to his son"); //His needs to be included as a determiner
+//    testParserAndGrammatica("The man sends a letter to a son");
+//    testParserAndGrammatica("Is he die"); //Did?
+//    testParserAndGrammatica("Was he kicked"); //was also should be added as an aux, also what is considered a noun
+//    testParserAndGrammatica("What did John kick to Mark");
+//    testParserAndGrammatica("Are you here");
 
     return 0;
 }
