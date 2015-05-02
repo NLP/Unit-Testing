@@ -11,7 +11,7 @@ void testParserAndGrammatica(const string& sentence);
 
 int main()
 {
-    Converter C("please");
+    Converter C("what");
     std::vector<Word> test = C.getWords();
     std::set<WordType> t = test.begin()->getTypes();
 
@@ -32,13 +32,20 @@ int main()
 //    testParserAndGrammatica("The man sends a letter to a son");
 //    testParserAndGrammatica("Is he die"); //Did?
 //    testParserAndGrammatica("Was he kicked"); //was also should be added as an aux, also what is considered a noun
-//    testParserAndGrammatica("What did John kick to Mark");
 //    testParserAndGrammatica("Why do you call it");
 //    testParserAndGrammatica("People have it");
 //    testParserAndGrammatica("There is power in a union");
 //    testParserAndGrammatica("People want things");
 //    testParserAndGrammatica("The speaker conveys his hatred");
 //    testParserAndGrammatica("Please work");
+//    testParserAndGrammatica("What did John kick");            //testing DO questions
+//    testParserAndGrammatica("What did John kick to Mark");
+//    testParserAndGrammatica("Who did John kick to");          //Testing IDO questions
+//    testParserAndGrammatica("Who did John kick the ball to");
+//    testParserAndGrammatica("Who kicked");                    //Testing Subj questions
+//    testParserAndGrammatica("Who kicked the ball");
+//    testParserAndGrammatica("Who kicked the ball to Mark");
+
 
 
     //"The" is considered a verb
