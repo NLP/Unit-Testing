@@ -17,5 +17,6 @@ HEADERS += \
     ../../Parser/Tokenizer/token.h \
     ../../Parser/Tagger/word.h \
     ../../Parser/Tagger/converter.h \
-    ../../Parser/Tagger/config.h
+    ../../Parser/Tagger/config.h \
+    ../../CONFIG/config.h
 
