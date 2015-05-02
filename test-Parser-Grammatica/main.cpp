@@ -11,18 +11,16 @@ void testParserAndGrammatica(const string& sentence);
 
 int main()
 {
-    Converter C("what");
+    Converter C("who");
     std::vector<Word> test = C.getWords();
     std::set<WordType> t = test.begin()->getTypes();
-
-    std::set<WordType>::iterator it = t.begin();
-    for(std::size_t i = 0; it != t.end(); ++it){
+    for(std::set<WordType>::iterator it = t.begin(); it != t.end(); ++it){
         cout << WordStringMap[*it] << endl;
     }
 //    testParserAndGrammatica("He walks");
 //    testParserAndGrammatica("I like cake");
 //    testParserAndGrammatica("My name is John");
-//    testParserAndGrammatica("Who are you");
+    testParserAndGrammatica("Who are you"); //that partial parsing problem
 //    testParserAndGrammatica("Did you eat"); //Gotta add did, does, do; have, had; am, are, is for aux
 //    testParserAndGrammatica("Did John kick the ball");
 //    testParserAndGrammatica("Why can I give a sentence to you"); //Why needs to be its own class.. what is should recognized as?
@@ -37,15 +35,16 @@ int main()
 //    testParserAndGrammatica("There is power in a union");
 //    testParserAndGrammatica("People want things");
 //    testParserAndGrammatica("The speaker conveys his hatred");
-//    testParserAndGrammatica("Please work");
+//    testParserAndGrammatica("Please work"); //Doubt this would parse anyways
 //    testParserAndGrammatica("What did John kick");            //testing DO questions
 //    testParserAndGrammatica("What did John kick to Mark");
 //    testParserAndGrammatica("Who did John kick to");          //Testing IDO questions
 //    testParserAndGrammatica("Who did John kick the ball to");
-//    testParserAndGrammatica("Who kicked");                    //Testing Subj questions
-//    testParserAndGrammatica("Who kicked the ball");
-//    testParserAndGrammatica("Who kicked the ball to Mark");
-
+    //These three will not parse. Need to look into and fix
+    testParserAndGrammatica("Who kicked");                    //Testing Subj questions
+    testParserAndGrammatica("Who kicks the ball"); //Problem questions: They do not seem to parse all of the trees
+    testParserAndGrammatica("Who kicks the ball to Mark"); //Perhaps its because of the mismatches in tags?
+//    testParserAndGrammatica("Where will I die");
 
 
     //"The" is considered a verb
@@ -93,4 +92,5 @@ void testParserAndGrammatica(const string& sentence) {
         cout << "something went wrong : " << "ParserAndGrammatica" << endl;
     }
     cout << "-------- End of ParserAndGrammatica test case -----\n\n";
+    cin.get();
 }
