@@ -11,7 +11,7 @@ void testParserAndGrammatica(const string& sentence);
 
 int main()
 {
-    Converter C("who");
+    Converter C("a");
     std::vector<Word> test = C.getWords();
     std::set<WordType> t = test.begin()->getTypes();
     for(std::set<WordType>::iterator it = t.begin(); it != t.end(); ++it){
@@ -20,7 +20,7 @@ int main()
 //    testParserAndGrammatica("He walks");
 //    testParserAndGrammatica("I like cake");
 //    testParserAndGrammatica("My name is John");
-    testParserAndGrammatica("Who are you"); //that partial parsing problem
+//    testParserAndGrammatica("Who are you"); //that partial parsing problem
 //    testParserAndGrammatica("Did you eat"); //Gotta add did, does, do; have, had; am, are, is for aux
 //    testParserAndGrammatica("Did John kick the ball");
 //    testParserAndGrammatica("Why can I give a sentence to you"); //Why needs to be its own class.. what is should recognized as?
@@ -40,11 +40,13 @@ int main()
 //    testParserAndGrammatica("What did John kick to Mark");
 //    testParserAndGrammatica("Who did John kick to");          //Testing IDO questions
 //    testParserAndGrammatica("Who did John kick the ball to");
-    //These three will not parse. Need to look into and fix
-    testParserAndGrammatica("Who kicked");                    //Testing Subj questions
-    testParserAndGrammatica("Who kicks the ball"); //Problem questions: They do not seem to parse all of the trees
-    testParserAndGrammatica("Who kicks the ball to Mark"); //Perhaps its because of the mismatches in tags?
+////    These three will not parse. Need to look into and fix
+//    testParserAndGrammatica("Who kicked");                    //Testing Subj questions
+//    testParserAndGrammatica("Who kicks the ball"); //Problem questions: They do not seem to parse all of the trees
+//    testParserAndGrammatica("Who kicks the ball to Mark"); //Perhaps its because of the mismatches in tags?
 //    testParserAndGrammatica("Where will I die");
+//    testParserAndGrammatica("What does John do");
+
 
 
     //"The" is considered a verb
@@ -58,6 +60,8 @@ int main()
     //No adjectives or adverbs yet
     //No S-> IP NP NP support
 
+
+    //Unfortunately, why, how questions are not supported YET
     return 0;
 }
 
@@ -86,6 +90,7 @@ void testParserAndGrammatica(const string& sentence) {
                 cout << tAll[j] << "|";
             }
             cout << endl;
+            cout << "ASKING FOR: " << syntaxLookUp[S[i].askingFor()] << endl;
         }
 
     } catch (const char* e) {
