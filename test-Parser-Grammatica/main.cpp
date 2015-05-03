@@ -46,7 +46,8 @@ int main()
 //    testParserAndGrammatica("Who kicks the ball to Mark"); //Perhaps its because of the mismatches in tags?
 //    testParserAndGrammatica("Where will I die");
 //    testParserAndGrammatica("What does John do");
-    testParserAndGrammatica("What does John do to the ball");
+//    testParserAndGrammatica("What does John do to the ball");
+    testParserAndGrammatica("He walks to the park at noon.");
 
 
 
