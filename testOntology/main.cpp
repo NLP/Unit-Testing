@@ -15,12 +15,15 @@ void testOntologyInsertion(const string& query);/// @note PASSED
 
 int main()
 {
+    bool done = false;
     // using one instance is better for efficiency
     Converter myConverter;
     string sentence;
-    cout << "Sentence : ";
-    getline(cin, sentence);
-    testQueryGenerator (myConverter, sentence);
+    while(!done) {
+        cout << "Sentence : ";
+        getline(cin, sentence);
+        testQueryGenerator (myConverter, sentence);
+    }
 //    testOntologyInsertion ();
     return 0;
 }
@@ -37,8 +40,7 @@ void testQueryGenerator(Converter &conv, const string &sentence) {
         conv.setString (sentence);
         Parser P(CFGQ() , conv.getWords ());
         STvector S = P.parse ();
-        cout << "Number of possible three : " << S.size () << endl;
-        cout << "Proceeds with insertion to database" << endl;
+        cout << "Tree found : " << S.size () << endl;
         /// for now, make sure vector only have 1 SyntaxTree
         string stringQuery;
         QueryGenerator myQry;
