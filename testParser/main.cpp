@@ -1,18 +1,23 @@
 #include <iostream>
 #include "../../Parser/Tagger/converter.h"
 
-void testConverter(string sentence);
 
+using namespace NLP;
 using namespace std;
+void testConverter(Converter& conv, const string& sentence);
+
 
 int main()
 {
-    testConverter("This is a Bear");
-    testConverter("That is not a building");       /// Bug , comma in dictionary
-    testConverter("Who told you that?");
-    testConverter("That's what she said.");
-    testConverter("In general, the dative marks the indirect object of a verb, although in some instances, the dative is used for the direct object of a verb pertaining directly to an act of giving something");
-    testConverter("These pronouns are not proper datives anymore in modern English, because they are also used for functions of the accusative.");
+    Converter myConverter;
+    testConverter(myConverter, "This is a Bear");
+    testConverter(myConverter, "That is not a building");       /// Bug , comma in dictionary
+    testConverter(myConverter, "Who told you that?");
+    testConverter(myConverter, "That's what she said.");
+    testConverter(myConverter, "In general, the dative marks the indirect object of a verb, although in some instances, the dative is used for the direct object of a verb pertaining directly to an act of giving something"));
+    testConverter(myConverter, "These pronouns are not proper datives anymore in modern English, because they are also used for functions of the accusative."));
+    testConverter(myConverter, "Should have will may can could");
+    testConverter(myConverter, "Who is making that sounds?");
     return 0;
 }
 
@@ -20,12 +25,11 @@ int main()
  * Test case for Converter class
  * @param none 
  */
-void testConverter(string sentence) {
+void testConverter(Converter &conv, const string &sentence) {
     std::cout << "---   Testing Converter -----\n";
     try {
-
-        NLP::Converter converted(sentence); // Passed
-        list<NLP::Word> myParsedWords = converted.getWords();
+        conv.setString (sentence);
+        vector<NLP::Word> myParsedWords = conv.getWords();
         for(NLP::Word wd: myParsedWords)
             cout << wd << " : " << wd.getRawtypes() << endl;
 
