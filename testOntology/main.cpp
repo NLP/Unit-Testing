@@ -12,6 +12,7 @@ using namespace std;
 
 void testQueryGenerator(Converter& conv, const string& sentence);
 void testOntologyInsertion(const string& query);/// @note PASSED
+void testOntologyQuestion (const string& query, string &result);
 
 int main()
 {
@@ -24,7 +25,6 @@ int main()
         getline(cin, sentence);
         testQueryGenerator (myConverter, sentence);
     }
-//    testOntologyInsertion ();
     return 0;
 }
 
@@ -45,19 +45,33 @@ void testQueryGenerator(Converter &conv, const string &sentence) {
         string stringQuery;
         QueryGenerator myQry;
         if(!S.empty ()) {
+            cout << "DEBUG(type) : " << sentenceLookUp[S[0].getSentenceType()] << endl;
+            /// Here, query command will be generated based on SentenceType
             stringQuery = myQry.getQueryOf (S[0]);
+
+            /// Phase 2 : Insertion or Request
+            string tmp_result; /// For interrogative sentence, a reply is needed
+            switch (S[0].getSentenceType())
+            {
+            case SentenceType::DECLARATIVE:
+                cout << " Inserting to database : " << endl;
+                testOntologyInsertion (stringQuery);
+                break;
+            case SentenceType::INTERROGATIVE:
+                testOntologyQuestion (stringQuery, tmp_result);
+                cout << ">> " << tmp_result << endl;
+//                throw unimplemented_exc();
+                break;
+            default:
+                break;
+            }
+
         } else {
-            cout << "Sorry, no sensible structure found" << endl;
-            throw unimplemented_exc();
+            cout << "I'm sorry Dave, I'm afraid I can't do that" << endl;
         }
-        cout << "result : " << stringQuery << endl;
-        /// Phase 2 : Insertion to database
-        cout << " Inserting to database : " << endl;
-        testOntologyInsertion (stringQuery);
-    } catch (const char* e) {
-        cout << "something went wrong : " << "QueryGenerator" << endl;
+
     } catch (const exception &e) {
-            cout << e.what() << endl;
+        cout << e.what() << endl;
     }
     cout << "-------- End of QueryGenerator test case -----\n\n";
 }
@@ -69,9 +83,13 @@ void testOntologyInsertion(const string &query)
 {
     /// testing query
     OntologyDatabase testOntologyDB;
-//    OntologyDatabase testOntologyDB_two;
     /// Working
-//    testOntologyDB.testInsertionQuery ("DELETE from ontology");
-//    testOntologyDB.testInsertionQuery ("INSERT INTO ontology(sub, pred, obj) VALUES ('They', 'are' , 'teachers')");
-    testOntologyDB.testInsertionQuery (query);
+    testOntologyDB.InsertionQuery (query);
+}
+
+/// @note TESTING. ...
+void testOntologyQuestion (const string& query, string& result)
+{
+    OntologyDatabase testDB;
+    testDB.QuestionQuery (query, result); /// modify result
 }
