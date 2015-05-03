@@ -18,7 +18,7 @@ int main(){
     STvector S;
 
     cout << "Directions:" << endl;
-    cout << "Type in something. (MAX 100 Characters)" << endl;
+    cout << "Type in something. (MAX " << MAX << " Characters)" << endl;
     cout << "Don't make any grammar or spelling mistakes" << endl;
     cout << "Press \"x\" or \"X\" to exit" << endl << endl;
 
