@@ -15,23 +15,36 @@ int main()
 {
     char input[MAX];
     string sentence;
-
+    bool type = false;
     while(true){
-        cout <<"Enter: ..." << endl;
+        cout <<"Enter: ... ";
+        cout << (type ? "(Type Mode)" : "(Parse Mode)") << endl;
         cin.getline(input,MAX);
         sentence = input;
         if(sentence.compare("x") == 0 || sentence.compare("X") == 0)
             break;
-//        else if(sentence.compare("p") == 0 || sentence.compare("P") == 0){
+        else if(sentence.compare("p") == 0 || sentence.compare("P") == 0){
+            cout << "Set to Parse Mode" << endl;
+            type = false;
 //            cin.getline(input,MAX);
 //            sentence = input;
-            testParserAndGrammatica(sentence);
-//        }
-//        else if(sentence.compare("t") == 0 || sentence.compare("T") == 0){
+        }
+        else if(sentence.compare("t") == 0 || sentence.compare("T") == 0){
+            cout << "Set to Type Mode" << endl;
+            type = true;
 //            cin.getline(input,MAX);
 //            sentence = input;
-//            testTypes(sentence);
-//        }
+        }
+        else{
+
+            if(type){
+                testTypes(sentence);
+            }
+            else{
+                testParserAndGrammatica(sentence);
+            }
+        }
+
     }
 //    testParserAndGrammatica("He walks.");
 //    testParserAndGrammatica("I like cake.");
