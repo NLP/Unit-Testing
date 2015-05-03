@@ -4,18 +4,34 @@
 #include "../../Grammatica/Syntax-Tree/parser.h"
 #include "../../Grammatica/Syntax-Tree/syntaxtree.h"
 #include "../../Grammatica/Grammar Structure/Grammar-with-Map/cfgq.h"
-
 using namespace std;
 
 void testParserAndGrammatica(const string& sentence);
+void testTypes(const string& word);
+
+const int MAX = 100;
 
 int main()
 {
-    Converter C("Really");
-    std::vector<Word> test = C.getWords();
-    std::set<WordType> t = test.begin()->getTypes();
-    for(std::set<WordType>::iterator it = t.begin(); it != t.end(); ++it){
-        cout << WordStringMap[*it] << endl;
+    char input[MAX];
+    string sentence;
+
+    while(true){
+        cout <<"Enter: ..." << endl;
+        cin.getline(input,MAX);
+        sentence = input;
+        if(sentence.compare("x") == 0 || sentence.compare("X") == 0)
+            break;
+//        else if(sentence.compare("p") == 0 || sentence.compare("P") == 0){
+//            cin.getline(input,MAX);
+//            sentence = input;
+            testParserAndGrammatica(sentence);
+//        }
+//        else if(sentence.compare("t") == 0 || sentence.compare("T") == 0){
+//            cin.getline(input,MAX);
+//            sentence = input;
+//            testTypes(sentence);
+//        }
     }
 //    testParserAndGrammatica("He walks.");
 //    testParserAndGrammatica("I like cake.");
@@ -46,8 +62,8 @@ int main()
 //    testParserAndGrammatica("Where will I die?");
 //    testParserAndGrammatica("What does John do?");
 //    testParserAndGrammatica("What does John do to the ball?");
-    testParserAndGrammatica("The man, whose dog ran away, lives in the old house next door.");
-    testParserAndGrammatica("Whose dog was that?");
+//    testParserAndGrammatica("The man, whose dog ran away, lives in the old house next door.");
+//    testParserAndGrammatica("Whose dog was that?");
 
     //Unfortunately, why, how questions are not supported YET
     return 0;
@@ -86,5 +102,16 @@ void testParserAndGrammatica(const string& sentence) {
         cout << "something went wrong : " << "ParserAndGrammatica" << endl;
     }
     cout << "-------- End of ParserAndGrammatica test case -----\n\n";
-    cin.get();
+//    cin.get();
+}
+
+void testTypes(const string& word){
+    Converter C(word);
+    std::vector<Word> test = C.getWords();
+    std::set<WordType> t = test.begin()->getTypes();
+    cout << "Types for " << word << endl;
+    for(std::set<WordType>::iterator it = t.begin(); it != t.end(); ++it){
+        cout << WordStringMap[*it] << endl;
+    }
+    cout << endl;
 }
