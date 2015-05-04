@@ -1,44 +1,41 @@
 #include <iostream>
-#include "../../Parser/Tagger/converter.h"
-#include "../../Grammatica/Grammar Structure/Grammar-with-Map/cfgzero.h"
+#include <ctime>
+
 #include "../../Grammatica/Syntax-Tree/parser.h"
 #include "../../Grammatica/Syntax-Tree/syntaxtree.h"
+#include "../../Grammatica/Grammar Structure/Grammar-with-Map/cfgzero.h"
 #include "../../Grammatica/Grammar Structure/Grammar-with-Map/cfgq.h"
+#include "../../Parser/Tagger/converter.h"
 #include "../../Granular-Extractor/Database/OntologyDatabase.h"
 #include "../../Granular-Extractor/Database/CorpusQueryGenerator.h"
 #include "../../CONFIG/config.h"
 
-#include <ctime>
-//#include "../../CONFIG/config.h"
 using namespace std;
 using namespace NLP;
-//Here is where the program is run:
-//1. Accept an input sentence from user
-//2. Tokenize & Parse
-//3. Store into Database /OR/ Extract from Database
-//4. Print Result if Necessary
+
 void query(Converter& C, const string& s, OntologyDatabase &O);
 void ontologize(const string& q, OntologyDatabase &O);
 void ontologize(const string &q, string &r, OntologyDatabase &O);
 void hello();
 void response(int i);
 int rng(int high, int low);
+int size(const string s[]);
 
 const string responses[] = {
     "Of course.", "Very well.", "I understand.", "So what?", "Alright.",
-    "I see.", "Ok."
+    "I see.", "Ok.",
+    ""
 };
-const int resSize = 7;
 const string invalids[] = {
     "I don't know.", "I don't understand.", "~shurg~", "I need more information.",
-    "Why don't ask someone else?", "Not enough info.", "I don't recall."
+    "Why don't ask someone else?", "Not enough info.", "I don't recall.",
+    ""
 };
-const int invSize = 7;
 const string ask[] = {
     "What is on your mind?", "Do you have anything to say?", "Anything?", "What do you want to tell me?",
-    "Are you going to tell me something?", "What's interesting?", "What's up?"
+    "Are you going to tell me something?", "What's interesting?", "What's up?",
+    ""
 };
-const int askSize = 7;
 
 const int MAX = 100;
 
@@ -54,7 +51,7 @@ int main(){
     hello();
 
     while(true){
-        cout << ask[rng(askSize,0)] << endl;
+        cout << ask[rng(size(ask),0)] << endl;
         cin.getline(input,MAX);
         sentence = input;
         cout << endl;
@@ -105,10 +102,10 @@ void hello(){
 
 void response(int i){
     if(i > 0){
-        cout << responses[rng(resSize,0)] << endl << endl;
+        cout << responses[rng(size(responses),0)] << endl << endl;
     }
     else if(i < 0){
-        cout << invalids[rng(invSize,0)] << endl << endl;
+        cout << invalids[rng(size(invalids),0)] << endl << endl;
     }
     else {
         cout << "I'm sorry Dave, I'm afraid I can't do that." << endl << endl;
@@ -118,6 +115,12 @@ void response(int i){
 
 int rng(int high, int low){
     return (rand() % (high - low)) + low;
+}
+
+int size(const string s[]){
+    int i = 0;
+    while(s[i] != "") ++i;
+    return i;
 }
 
 void query(Converter& C, const string& s, OntologyDatabase& O){
