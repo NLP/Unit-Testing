@@ -21,7 +21,7 @@ int main()
     Converter myConverter;
     string sentence;
     while(!done) {
-        cout << "Sentence : ";
+        cout << ">> ";
         getline(cin, sentence);
         testQueryGenerator (myConverter, sentence);
     }
@@ -40,26 +40,26 @@ void testQueryGenerator(Converter &conv, const string &sentence) {
         conv.setString (sentence);
         Parser P(CFGQ() , conv.getWords ());
         STvector S = P.parse ();
-        cout << "Tree found : " << S.size () << endl;
+//        cout << "Tree found : " << S.size () << endl;
         /// for now, make sure vector only have 1 SyntaxTree
         string stringQuery;
         QueryGenerator myQry;
         if(!S.empty ()) {
-            cout << "DEBUG(type) : " << sentenceLookUp[S[0].getSentenceType()] << endl;
-
             /// Here, query command will be generated based on SentenceType
             stringQuery = myQry.getQueryOf (S[0]);
+
+//            cout << "DEBUG(type) : " << sentenceLookUp[S[0].getSentenceType()] << endl;
+//            cout << "DEBUG(qry)  : " << stringQuery << endl;
 
             /// Phase 2 : Insertion or Request
             string tmp_result; /// For interrogative sentence, a reply is needed
             switch (S[0].getSentenceType())
             {
             case SentenceType::DECLARATIVE:
-                cout << " Inserting to database : " << endl;
+//                cout << " Inserting to database : " << endl;
                 testOntologyInsertion (stringQuery);
                 break;
             case SentenceType::INTERROGATIVE:
-//                SyntaxObject askFor = S[0].askingFor(); /// need to to find out if Interrogative question is yes/no or asking value
                 testOntologyQuestion (stringQuery, tmp_result);
                 /// Is there any relationship found from the table?
                 if(S[0].askingFor() == SyntaxObject::AUX)
