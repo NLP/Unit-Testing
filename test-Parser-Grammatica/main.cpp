@@ -17,6 +17,8 @@ int main()
     for(std::set<WordType>::iterator it = t.begin(); it != t.end(); ++it){
         cout << WordStringMap[*it] << endl;
     }
+    testParserAndGrammatica("He is crazy");
+    testParserAndGrammatica("Is he crazy");
 //    testParserAndGrammatica("He walks");
 //    testParserAndGrammatica("I like cake");
 //    testParserAndGrammatica("My name is John");
@@ -47,7 +49,7 @@ int main()
 //    testParserAndGrammatica("Where will I die");
 //    testParserAndGrammatica("What does John do");
 //    testParserAndGrammatica("What does John do to the ball");
-    testParserAndGrammatica("He walks to the park at noon.");
+//    testParserAndGrammatica("He walks to the park at noon.");
 
 
 

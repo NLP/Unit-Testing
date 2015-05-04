@@ -26,6 +26,7 @@ int main(){
 //    STvector S;
     OntologyDatabase DB;
     Converter C;
+    bool type = false;
 
     cout << "Directions:" << endl;
     cout << "Type in something. (MAX " << MAX << " Characters)" << endl;
@@ -41,18 +42,17 @@ int main(){
             break;
 
         try {
-//            Parser P(CFGQ(),Converter(sentence).getWords());
-
-
-//            S = P.parse();
-//            for(std::size_t i = 0; i < S.size(); ++i){
-//                //Do stuff here to eliminate trees
-//            }
-
-            query(C,sentence,DB);
-
-            //The answer here
-
+            if(type){
+                Converter C(sentence);
+                std::vector<Word> test = C.getWords();
+                std::set<WordType> t = test.begin()->getTypes();
+                cout << "The types of " << sentence << "is: " << endl;
+                for(std::set<WordType>::iterator it = t.begin(); it != t.end(); ++it){
+                    cout << WordStringMap[*it] << endl;
+                }
+            }
+            else
+                query(C,sentence,DB);
         } catch (const char* e) {
             cout << "something went wrong : " << "Main Driver" << endl;
         }
