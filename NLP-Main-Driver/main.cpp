@@ -40,22 +40,30 @@ int main(){
 
         if(sentence.compare("x") == 0 || sentence.compare("X") == 0)
             break;
-
-        try {
-            if(type){
-                Converter C(sentence);
-                std::vector<Word> test = C.getWords();
-                std::set<WordType> t = test.begin()->getTypes();
-                cout << "The types of " << sentence << "is: " << endl;
-                for(std::set<WordType>::iterator it = t.begin(); it != t.end(); ++it){
-                    cout << WordStringMap[*it] << endl;
+        else if(sentence.compare("m") == 0 || sentence.compare("M") == 0)
+            type = !type;
+        else{
+            try {
+                if(type){
+                    Converter C(sentence);
+                    std::vector<Word> test = C.getWords();
+                    std::set<WordType> t = test.begin()->getTypes();
+                    cout << "The types of \"" << sentence << "\" is: " << endl;
+                    for(std::set<WordType>::iterator it = t.begin(); it != t.end(); ++it){
+                        cout << WordStringMap[*it] << endl;
+                    }
                 }
+                else
+                    query(C,sentence,DB);
+
+            } catch (const char* e) {
+                cout << "something went wrong : " << "Main Driver" << endl;
             }
-            else
-                query(C,sentence,DB);
-        } catch (const char* e) {
-            cout << "something went wrong : " << "Main Driver" << endl;
         }
+//        else if
+
+
+
     }
     cout << endl << "Goodbye!" << endl;
     return 0;
@@ -74,6 +82,7 @@ void query(Converter& C, const string& s, OntologyDatabase& O){
            switch (S[0].getSentenceType()){
                case SentenceType::DECLARATIVE:{
                    ontologize (stringQuery,O);
+                   cout << "Of course." << endl;
                    break;
                }
                case SentenceType::INTERROGATIVE:{
