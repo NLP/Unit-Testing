@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ctime>
+#include <fstream>
 
 #include "../../Grammatica/Syntax-Tree/parser.h"
 #include "../../Grammatica/Syntax-Tree/syntaxtree.h"
@@ -20,6 +21,7 @@ void hello();
 void response(int i);
 int rng(int high, int low);
 int size(const string s[]);
+void printLogin();
 
 const string responses[] = {
     "Of course.", "Very well.", "I understand.", "So what?", "Alright.",
@@ -41,7 +43,9 @@ const string ask[] = {
 
 const int MAX = 100;
 
-int main(){
+int main()
+{
+    printLogin ();
     srand(time(NULL));
     char input[MAX];
     string sentence;
@@ -167,4 +171,16 @@ void ontologize(const string& q, OntologyDatabase& O){
 }
 void ontologize(const string &q, string &r, OntologyDatabase &O){
     O.QuestionQuery (q, r); /// modify result
+}
+
+void printLogin()
+{
+    string line;
+    ifstream myfile("../ultron.txt");
+    if (myfile.is_open())
+    {
+      while ( getline (myfile,line) )
+        cout << line << '\n';
+      myfile.close();
+    }
 }
