@@ -57,7 +57,7 @@ int main()
     hello();
 
     while(true){
-        cout << ask[rng(size(ask),0)] << endl;
+//        cout << ask[rng(size(ask),0)] << endl;
         cout << " >> ";
         cin.getline(input,MAX);
         sentence = input;
@@ -145,7 +145,7 @@ void query(Converter& C, const string& s, OntologyDatabase& O){
            switch (S[0].getSentenceType()){
                case SentenceType::DECLARATIVE:{
                    ontologize (stringQuery,O);
-                   response(1);
+//                   response(1);
                    break;
                }
                case SentenceType::INTERROGATIVE:{
