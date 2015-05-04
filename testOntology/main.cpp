@@ -46,6 +46,7 @@ void testQueryGenerator(Converter &conv, const string &sentence) {
         QueryGenerator myQry;
         if(!S.empty ()) {
             cout << "DEBUG(type) : " << sentenceLookUp[S[0].getSentenceType()] << endl;
+
             /// Here, query command will be generated based on SentenceType
             stringQuery = myQry.getQueryOf (S[0]);
 
@@ -58,11 +59,15 @@ void testQueryGenerator(Converter &conv, const string &sentence) {
                 testOntologyInsertion (stringQuery);
                 break;
             case SentenceType::INTERROGATIVE:
+//                SyntaxObject askFor = S[0].askingFor(); /// need to to find out if Interrogative question is yes/no or asking value
                 testOntologyQuestion (stringQuery, tmp_result);
+                /// Is there any relationship found from the table?
+                if(S[0].askingFor() == SyntaxObject::AUX)
+                    tmp_result = (tmp_result.empty () ? "No" : "Yes");
                 cout << ">> " << tmp_result << endl;
-//                throw unimplemented_exc();
                 break;
             default:
+                throw unimplemented_exc();
                 break;
             }
 
