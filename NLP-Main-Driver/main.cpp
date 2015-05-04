@@ -23,17 +23,19 @@ int size(const string s[]);
 
 const string responses[] = {
     "Of course.", "Very well.", "I understand.", "So what?", "Alright.",
-    "I see.", "Ok.",
+    "I see.", "Ok.", "Yup.", "I'll remember.", "You read my mind.",
     ""
 };
 const string invalids[] = {
     "I don't know.", "I don't understand.", "~shurg~", "I need more information.",
     "Why don't ask someone else?", "Not enough info.", "I don't recall.",
+    "Who knows?", "No clue.", "Honestly? No idea.", "I have no idea.",
     ""
 };
 const string ask[] = {
     "What is on your mind?", "Do you have anything to say?", "Anything?", "What do you want to tell me?",
     "Are you going to tell me something?", "What's interesting?", "What's up?",
+    "Speak your mind.", "What's happening?", "Well?", "Hmm?",
     ""
 };
 
