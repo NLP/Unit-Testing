@@ -11,7 +11,7 @@ void testParserAndGrammatica(const string& sentence);
 
 int main()
 {
-    Converter C("a");
+    Converter C("Really");
     std::vector<Word> test = C.getWords();
     std::set<WordType> t = test.begin()->getTypes();
     for(std::set<WordType>::iterator it = t.begin(); it != t.end(); ++it){
@@ -64,6 +64,8 @@ int main()
     //No adjectives or adverbs yet
     //No S-> IP NP NP support
 
+    testParserAndGrammatica("The man, whose dog ran away, lives in the old house next door.");
+    testParserAndGrammatica("Whose dog was that?");
 
     //Unfortunately, why, how questions are not supported YET
     return 0;
@@ -83,18 +85,19 @@ void testParserAndGrammatica(const string& sentence) {
 //        cout << P.getGrammar() << endl;
         cout << "Sentence: " << sentence << endl;
         cout << endl;
-        cout << "Parsing the Sentence based on Grammar" << endl;
+        cout << "Parsing the Sentence based on Grammar: " << endl;
         STvector S = P.parse();
         for(std::size_t i = 0; i < S.size(); ++i){
-            cout << "SENTENCE TYPE: " << sentenceLookUp[S[i].getSentenceType()] << endl;
-            cout << "#" << i+1 << ": " << S[i] << endl;
-            cout << "LIST: ";
+            cout << "#" << i+1 << ":" << endl;
+            cout << S[i] << endl << endl;
+            cout << "SENTENCE TYPE:  " << sentenceLookUp[S[i].getSentenceType()] << endl << endl;
+            cout << "LIST:  ";
             std::vector<SyntaxWord> tAll = S[i].getAll();
             for(std::size_t j = 0; j < tAll.size(); ++j){
                 cout << tAll[j] << "|";
             }
-            cout << endl;
-            cout << "ASKING FOR: " << syntaxLookUp[S[i].askingFor()] << endl;
+            cout << endl << endl;
+            cout << "ASKING FOR:  " << syntaxLookUp[S[i].askingFor()] << endl << endl;
         }
 
     } catch (const char* e) {

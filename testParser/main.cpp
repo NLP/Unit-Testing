@@ -1,18 +1,23 @@
 #include <iostream>
 #include "../../Parser/Tagger/converter.h"
 
-void testConverter(string sentence);
 
+using namespace NLP;
 using namespace std;
+void testConverter(Converter& conv, const string& sentence);
+
 
 int main()
 {
-    testConverter("This is a Bear");
-    testConverter("That is not a building");       /// Bug , comma in dictionary
-    testConverter("Who told you that?");
-    testConverter("That's what she said.");
-    testConverter("In general, the dative marks the indirect object of a verb, although in some instances, the dative is used for the direct object of a verb pertaining directly to an act of giving something");
-    testConverter("These pronouns are not proper datives anymore in modern English, because they are also used for functions of the accusative.");
+    bool done = false;
+    // using one instance is better for efficiency
+    Converter myConverter;
+    string sentence;
+    while(!done) {
+        cout << "Sentence : ";
+        getline(cin, sentence);
+        testConverter (myConverter, sentence);
+    }
     return 0;
 }
 
@@ -20,12 +25,12 @@ int main()
  * Test case for Converter class
  * @param none 
  */
-void testConverter(string sentence) {
+void testConverter(Converter &conv, const string &sentence) {
     std::cout << "---   Testing Converter -----\n";
     try {
+        conv.setString (sentence);
+        vector<NLP::Word> myParsedWords = conv.getWords();
 
-        NLP::Converter converted(sentence); // Passed
-        list<NLP::Word> myParsedWords = converted.getWords();
         for(NLP::Word wd: myParsedWords)
             cout << wd << " : " << wd.getRawtypes() << endl;
 
