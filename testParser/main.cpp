@@ -9,15 +9,15 @@ void testConverter(Converter& conv, const string& sentence);
 
 int main()
 {
+    bool done = false;
+    // using one instance is better for efficiency
     Converter myConverter;
-    testConverter(myConverter, "This is a Bear");
-    testConverter(myConverter, "That is not a building");       /// Bug , comma in dictionary
-    testConverter(myConverter, "Who told you that?");
-    testConverter(myConverter, "That's what she said.");
-    testConverter(myConverter, "In general, the dative marks the indirect object of a verb, although in some instances, the dative is used for the direct object of a verb pertaining directly to an act of giving something"));
-    testConverter(myConverter, "These pronouns are not proper datives anymore in modern English, because they are also used for functions of the accusative."));
-    testConverter(myConverter, "Should have will may can could");
-    testConverter(myConverter, "Who is making that sounds?");
+    string sentence;
+    while(!done) {
+        cout << "Sentence : ";
+        getline(cin, sentence);
+        testConverter (myConverter, sentence);
+    }
     return 0;
 }
 
@@ -30,6 +30,7 @@ void testConverter(Converter &conv, const string &sentence) {
     try {
         conv.setString (sentence);
         vector<NLP::Word> myParsedWords = conv.getWords();
+
         for(NLP::Word wd: myParsedWords)
             cout << wd << " : " << wd.getRawtypes() << endl;
 
