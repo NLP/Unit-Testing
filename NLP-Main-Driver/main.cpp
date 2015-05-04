@@ -29,9 +29,9 @@ const string responses[] = {
     ""
 };
 const string invalids[] = {
-    "I don't know.", "I don't understand.", "~shurg~", "I need more information.",
-    "Why don't ask someone else?", "Not enough info.", "I don't recall.",
-    "Who knows?", "No clue.", "Honestly? No idea.", "I have no idea.",
+    "I don't know.", //"I don't understand.", "~shurg~", "I need more information.",
+    //"Why don't you ask someone else?", "Not enough info.", "I don't recall.",
+    //"Who knows?", "No clue.", "Honestly? No idea.", "I have no idea.",
     ""
 };
 const string ask[] = {
