@@ -73,27 +73,18 @@ int main()
             type = !type;
         }
         else{
-            try {
-                if(type){
-                    Converter C(sentence);
-                    std::vector<Word> test = C.getWords();
-                    std::set<WordType> t = test.begin()->getTypes();
-                    cout << "The types of \"" << sentence << "\" is: " << endl;
-                    for(std::set<WordType>::iterator it = t.begin(); it != t.end(); ++it){
-                        cout << WordStringMap[*it] << endl;
-                    }
+            if(type){
+                C.setString(sentence);
+                vector<Word> test = C.getWords();
+                set<WordType> t = test.begin()->getTypes();
+                cout << "The types of \"" << sentence << "\" is: " << endl;
+                for(set<WordType>::iterator it = t.begin(); it != t.end(); ++it){
+                    cout << WordStringMap[*it] << endl;
                 }
-                else
-                    query(C,sentence,DB);
-
-            } catch (const char* e) {
-                cout << "something went wrong : " << "Main Driver" << endl;
             }
+            else
+                query(C,sentence,DB);
         }
-//        else if
-
-
-
     }
     return 0;
 }
@@ -152,8 +143,11 @@ void query(Converter& C, const string& s, OntologyDatabase& O){
                    ontologize (stringQuery, tmp_result,O);
                    if(tmp_result.empty())
                        response(-1);
-                   else  cout << "Ultron : " << tmp_result << endl;
-                   // throw unimplemented_exc();
+                   else {
+                       if(S[0].askingFor() == SyntaxObject::AUX)
+                           tmp_result = (tmp_result.empty () ? "No" : "Yes");
+                       cout << "Ultron : " << tmp_result << endl;
+                   }
                    break;
                }
                default:{
