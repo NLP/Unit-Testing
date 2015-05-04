@@ -25,6 +25,7 @@ int main(){
     string sentence;
 //    STvector S;
     OntologyDatabase DB;
+    Converter C;
 
     cout << "Directions:" << endl;
     cout << "Type in something. (MAX " << MAX << " Characters)" << endl;
@@ -41,7 +42,7 @@ int main(){
 
         try {
 //            Parser P(CFGQ(),Converter(sentence).getWords());
-            Converter C;
+
 
 //            S = P.parse();
 //            for(std::size_t i = 0; i < S.size(); ++i){
