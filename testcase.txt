@@ -1,0 +1,70 @@
+ __    __   __      .___________..______        ______   .__   __.
+|  |  |  | |  |     |           ||   _  \      /  __  \  |  \ |  |
+|  |  |  | |  |     `---|  |----`|  |_)  |    |  |  |  | |   \|  |
+|  |  |  | |  |         |  |     |      /     |  |  |  | |  . `  |
+|  `--'  | |  `----.    |  |     |  |\  \----.|  `--'  | |  |\   |
+ \______/  |_______|    |__|     | _| `._____| \______/  |__| \__|
+
+                                           ____    ____  ___    __
+                                           \   \  /   / / _ \  /_ |
+                                            \   \/   / | | | |  | |
+                                             \      /  | | | |  | |
+                                              \    / __| |_| |  | |
+                                               \__/ (__)\___/   |_|
+ * Hello! I am Ultron!
+ * Please understand that I am only beginning to learn English.
+ * Thus please refrain from making grammatical and semantical errors when typing, and
+ * please type in no more than 100 characters at a time.
+ * Tell me a statements or facts that i can understand, and and I will remember.
+ * Ask me what you've told me and I will try to recall what I remember.
+ * If you wish to stop, press "x" or "X"
+Speak your mind.
+ >> John kicks the ball to jerry
+
+Ultron : I'll remember.
+
+What's up?
+ >> Jack kicks the ball to jerry
+
+Ultron : You read my mind.
+
+Speak your mind.
+ >> who kicks the ball to jerry?
+
+Ultron : john, jack
+What's up?
+ >> David kicks the ball to austen
+
+Ultron : Alright.
+
+Hmm?
+ >> who kicks the ball to jerry?
+
+Ultron : john, jack
+What's interesting?
+ >> who kicks the ball to austen?
+
+Ultron : david
+Speak your mind.
+ >> who kicks the ball?
+
+Ultron : john, jack, david
+Speak your mind.
+ >> what does jack do?
+
+Ultron : kicks
+What do you want to tell me?
+ >> what did john do?
+
+Ultron : kicks
+What is on your mind?
+ >> Everyone likes icecream
+
+Ultron : You read my mind.
+
+What do you want to tell me?
+ >> who likes icecream?
+
+Ultron : everyone
+What's happening?
+ >>

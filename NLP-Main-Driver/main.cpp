@@ -58,6 +58,7 @@ int main()
 
     while(true){
         cout << ask[rng(size(ask),0)] << endl;
+        cout << " >> ";
         cin.getline(input,MAX);
         sentence = input;
         cout << endl;
@@ -98,15 +99,17 @@ int main()
 }
 
 void hello(){
-    cout << "Hello! I am Ultron!" << endl;
-    cout << "Please understand that I am only beginning to learn English." << endl;
-    cout << "Thus please refrain from making grammatical and semantical errors when typing, and" << endl;
-    cout << "please type in no more than " << MAX << " characters at a time." << endl;
-    cout << "If you wish to stop, press \"x\" or \"X\"" << endl;
-    cout << "So..." << endl << endl;
+    cout << " * Hello! I am Ultron!" << endl;
+    cout << " * Please understand that I am only beginning to learn English." << endl;
+    cout << " * Thus please refrain from making grammatical and semantical errors when typing, and" << endl;
+    cout << " * please type in no more than " << MAX << " characters at a time." << endl;
+    cout << " * Tell me a statements or facts that i can understand, and and I will remember." << endl;
+    cout << " * Ask me what you've told me and I will try to recall what I remember." << endl;
+    cout << " * If you wish to stop, press \"x\" or \"X\"" << endl;
 }
 
 void response(int i){
+    cout << "Ultron : ";
     if(i > 0){
         cout << responses[rng(size(responses),0)] << endl << endl;
     }
@@ -149,7 +152,7 @@ void query(Converter& C, const string& s, OntologyDatabase& O){
                    ontologize (stringQuery, tmp_result,O);
                    if(tmp_result.empty())
                        response(-1);
-                   else  cout << tmp_result << endl;
+                   else  cout << "Ultron : " << tmp_result << endl;
                    // throw unimplemented_exc();
                    break;
                }
